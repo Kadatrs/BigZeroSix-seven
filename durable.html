@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Durable</title>
+<link href="style_durable.css" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Saira:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+<header>
+    <h1>Durable</h1>
+    <p>Utiliser le numérique de façon <b>durable</b></p>
+</header>
+
+<section>
+<div class="container">
+
+    <h2>Qu’est-ce que le numérique durable ?</h2>
+    <div class="definition">
+        Le numérique durable consiste à utiliser la technologie de manière
+        <b>responsable, écologique, inclusive et efficace</b>.
+        Il encourage la sobriété numérique, la réutilisation du matériel, le respect de l’environnement et la durabilité des pratiques.
+    </div>
+    <h1>Vrai ou Faux – Numérique Durable</h1>
+
+
+<p id="affirmation"></p>
+
+    <div class="buttons">
+        <button class="btn vrai" onclick="repondre(true)">VRAI</button>
+        <button class="btn faux" onclick="repondre(false)">FAUX</button>
+    </div>
+
+    <p id="correction"></p>
+
+</section>
+
+<div id = "button_idee">
+<button onclick="genererIdee()">Générer une idée de ce qui est durable</button>
+</div>
+    <h3 id="idee"></h3>
+
+
+
+<footer>
+© 2025 – Ressource NIRDLE – Réagissez pour l'avenir.
+</footer>
+
+<script>
+const affirmations = [
+    { texte: "Regarder une vidéo en HD consomme plus d'énergie qu'en basse définition.", reponse: true },
+    { texte: "Un ordinateur portable consomme autant qu'un ordinateur fixe.", reponse: false },
+    { texte: "Supprimer des fichiers inutiles réduit l’empreinte carbone.", reponse: true },
+    { texte: "Réparer un appareil est plus polluant que d’en acheter un neuf.", reponse: false },
+    { texte: "Le Wi-Fi consomme moins d’énergie que la 4G et la 5G.", reponse: true },
+    { texte: "Laisser un appareil en veille est plus durable que l’éteindre.", reponse: false },
+    { texte: "Un mail avec pièce jointe pollue plus qu’un mail sans pièce jointe.", reponse: true }
+];
+
+let index = 0;
+
+function afficherAffirmation() {
+    document.getElementById("affirmation").textContent = affirmations[index].texte;
+    document.getElementById("correction").textContent = "";
+}
+
+function repondre(choix) {
+    const bonneReponse = affirmations[index].reponse;
+
+    if (choix === bonneReponse) {
+        document.getElementById("correction").textContent = "✔ Bonne réponse !";
+        document.getElementById("correction").style.color = "#3a8f55";
+    } else {
+        document.getElementById("correction").textContent = "✘ Mauvaise réponse...";
+        document.getElementById("correction").style.color = "#c0392b";
+    }
+
+    // Passe à la question suivante après 1,2 seconde
+    setTimeout(() => {
+        index++;
+        if (index < affirmations.length) {
+            afficherAffirmation();
+        } else {
+            document.getElementById("affirmation").textContent = "🎉 Fin du jeu !";
+            document.getElementById("correction").textContent = "";
+        }
+    }, 1200);
+}
+
+afficherAffirmation();
+</script>
+
+<script>
+const idees = [
+    "Favoriser la réutilisation des ordinateurs et tablettes en classe.",
+    "Limiter le streaming et privilégier le contenu local.",
+    "Mettre en place un tri des déchets électroniques.",
+    "Installer des logiciels libres et durables.",
+    "Créer des ateliers sur la sobriété numérique.",
+    "Sensibiliser les élèves à l’empreinte carbone des outils numériques.",
+    "Réparer ou recycler le matériel avant de le remplacer.",
+    "Optimiser l’utilisation des serveurs pour économiser l’énergie.",
+    "Favoriser la collaboration avec des outils respectueux de l’environnement."
+];
+
+function genererIdee() {
+    const random = Math.floor(Math.random() * idees.length);
+    document.getElementById("idee").textContent = idees[random];
+}
+</script>
+
+</body>
+</html>

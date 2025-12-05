@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Innover</title>
+<link href="style_innover.css" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Workbench&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+<header>
+    <h1>Innover</h1>
+    <p>Créer, imaginer, transformer et innover le monde.</p>
+</header>
+
+<section>
+<div class="container">
+
+    <h2>Pourquoi innover en numérique ?</h2>
+    <div class="definition">
+        Innover en numérique, c’est chercher à créer des outils plus
+        <b>simples, compréhensibles, efficaces et utiles</b>.
+        Cela permet d’améliorer l’expérience de chacun, de résoudre des problèmes
+        et de rendre la technologie plus accessible.
+    </div>
+
+    <h2>Mini-jeu : Explore le mot INNOVER</h2>
+<div class="jeu">
+    <p><b>Trouve les 7 valeurs cachées dans les lettres d’INNOVER :</b></p>
+
+    <ul id="reponses">
+        <li><b>I</b> → <span class="mask">I*********</span></li>
+        <li><b>N</b> → <span class="mask">N********</span></li>
+        <li><b>N</b> → <span class="mask">N*********</span></li>
+        <li><b>O</b> → <span class="mask">O*********</span></li>
+        <li><b>V</b> → <span class="mask">V********</span></li>
+        <li><b>E</b> → <span class="mask">E********</span></li>
+        <li><b>R</b> → <span class="mask">R**********</span></li>
+    </ul>
+
+    <button id="btnReponse" onclick="reveleMot()">Voir la prochaine réponse</button>
+
+    <p>Chaque lettre t’aide à comprendre ce qui permet d’innover.</p>
+</div>
+
+<div id="buttons_container">
+    <button onclick="genererIdee()">Générer une idée d’innovation</button>
+    <button id="btnIA" onclick="genererIA()">Générer avec l’IA</button>
+</div>
+
+<h3 id="idee"></h3>
+<h3 id="ideeIA"></h3>
+
+
+<footer>
+2025 – Ressource NIRDLE – Réagissez pour l'avenir.
+</footer>
+
+<script>
+const valeurs = [
+    "Imagination",
+    "Nouveauté",
+    "Nécessité",
+    "Ouverture",
+    "Vision",
+    "Essai",
+    "Recherche"
+];
+
+let indexMot = 0;
+
+function reveleMot() {
+    const spans = document.querySelectorAll("#reponses .mask");
+
+    if (indexMot < spans.length) {
+        spans[indexMot].textContent = valeurs[indexMot];
+        indexMot++;
+
+        if (indexMot === spans.length) {
+            document.getElementById("btnReponse").textContent = "Toutes les valeurs révélées !";
+            document.getElementById("btnReponse").disabled = true;
+        }
+    }
+}
+</script>
+
+
+
+<script>
+const idees = [
+    "Mettre en place un atelier pour apprendre à protéger ses données.",
+    "Installer des logiciels libres pour favoriser l’autonomie technologique.",
+    "Créer un tableau des bonnes pratiques de sobriété numérique en classe.",
+    "Encourager le tri et l’archivage responsable des fichiers.",
+    "Utiliser des outils accessibles pour inclure tous les élèves.",
+    "Réparer ou réutiliser du matériel avant d’en acheter du neuf.",
+    "Créer une charte numérique éthique avec les élèves.",
+    "Limiter la vidéo HD quand ce n’est pas nécessaire pour réduire l’empreinte carbone.",
+    "Sensibiliser à la citoyenneté numérique et à la vérification des sources.",
+    "Favoriser la collaboration avec des outils partagés et respectueux des données.",
+    "Valoriser des projets créatifs autour du numérique responsable.",
+    "Accompagner les enseignants dans le choix d’outils éthiques."
+];
+
+function genererIdee() {
+    const random = Math.floor(Math.random() * idees.length);
+    document.getElementById("idee").textContent = idees[random];
+}
+</script>
+
+</body>
+</html>
